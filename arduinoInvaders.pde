@@ -473,8 +473,7 @@ void loop() {
     // millis() will overflow after approximately 50 days.
     if (currentMillis < lastMillis) {
         elapsedMillis = (MAXULONG - lastMillis) + currentMillis;
-    } 
-    else {
+    } else {
         elapsedMillis = currentMillis - lastMillis;
     }
     lastMillis = currentMillis;
@@ -487,8 +486,7 @@ void loop() {
         if (wobbleBacklightValue > -256) {
             analogWrite(lcdBacklightPin, abs(wobbleBacklightValue));
             wobbleBacklightValue -= wobbleBacklightStep;
-        } 
-        else {
+        } else {
             wobbleBacklightValue = 255;
             digitalWrite(lcdBacklightPin, HIGH);
             wobbleBacklight = false;
@@ -560,8 +558,7 @@ void loop() {
                 if (++currentNoteIdx >= titleMelodyNotes) {
                     currentNoteIdx = 0;
                     melodyFinished = true;
-                }
-                else {
+                } else {
                     // to calculate the note duration, take one second
                     // divided by the note type.
                     //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
@@ -569,8 +566,7 @@ void loop() {
                     tone(speakerPin, titleMelody[currentNoteIdx]);
                     melodyPause = false;
                 }
-            } 
-            else {
+            } else {
                 // to distinguish the notes, set a minimum time between them.
                 // the note's duration + 30% seems to work well:
                 currentNoteDuration = 1000/titleNoteDurations[currentNoteIdx] * 1.30;
@@ -642,8 +638,7 @@ void loop() {
         if (demo) {
             invaderIntervalMin = demoInvaderIntervalMin;
             invaderIntervalMax = demoInvaderIntervalMax;
-        } 
-        else {
+        } else {
             invaderIntervalMin = defaultInvaderIntervalMin;
             invaderIntervalMax = defaultInvaderIntervalMax;
         }
@@ -667,8 +662,7 @@ void loop() {
                         lcd.setCursor(j, i);
                         if (flickerState) {
                             lcd.write(lcdCharsRight[gameArena[(i*2)+1][j]]);
-                        } 
-                        else {
+                        } else {
                             lcd.write(lcdCharsLeft[gameArena[(i*2)][j]]);
                         }
                     }
@@ -714,17 +708,15 @@ void loop() {
             // nothing to shoot at. sit and wait
             if (!demoHaveTarget) {
                 demoMove = false;
-            } 
-            else {
-                // fire if under the target
+            } else {
                 if (playerPos == demoTargetPos) {
+                    // fire if under the target
                     demoHaveTarget = false;
                     demoMove = false;
                     leftButtonPressed = true;
                     digitalWrite(ledLeft, HIGH);
-                } 
-                // otherwise move one step closer
-                else {
+                } else {
+                    // otherwise move one step closer
                     demoMovePos = (playerPos < demoTargetPos) ? (right) : (left);
                     demoMove = true;
                     digitalWrite(ledRight, HIGH);
@@ -751,8 +743,7 @@ void loop() {
                     lcd.setCursor(1, playerPos/2);
                     lcd.write(lcdCharPlayerLeftID);
                     tone(speakerPin, 1000, 10);
-                } 
-                else {
+                } else {
                     if (playerPos > 0) {
                         gameArena[playerPos][1] = none;
                         lcd.setCursor(1, playerPos/2);
@@ -786,8 +777,7 @@ void loop() {
                     lcd.setCursor(1, playerPos/2);
                     lcd.write(lcdCharPlayerRightID);
                     tone(speakerPin, 1000, 10);
-                } 
-                else {
+                } else {
                     if (playerPos < (lcdRows*2)-1) {
                         gameArena[playerPos][1] = none;
                         lcd.setCursor(1, playerPos/2);
@@ -834,8 +824,7 @@ void loop() {
                                 if (!demo) {
                                     tone(speakerPin, 300, 100);
                                 }
-                            } 
-                            else {
+                            } else {
                                 gameArena[i][j+1] = shot;
                             }
                         }
@@ -867,8 +856,7 @@ void loop() {
                     if (!demo) {
                         tone(speakerPin, 300, 100);
                     }
-                } 
-                else {
+                } else {
                     gameArena[playerPos][2] = shot;
                 }
                 digitalWrite(ledLeft, LOW);
@@ -890,8 +878,7 @@ void loop() {
                                 if (!demo) {
                                     tone(speakerPin, 300, 100);
                                 }
-                            } 
-                            else if (gameArena[i][j-1] == player) {
+                            } else if (gameArena[i][j-1] == player) {
                                 // lost one guy
                                 gameArena[i][j-1] = playerHit;
                                 tone(speakerPin, 50, 200);
@@ -904,8 +891,7 @@ void loop() {
                                 }
 
                                 wobbleBacklight = true;
-                            }
-                            else {
+                            } else {
                                 gameArena[i][j-1] = invader;
                             }
                         }
@@ -980,8 +966,7 @@ void loop() {
                 if (++currentNoteIdx >= titleMelodyNotes) {
                     currentNoteIdx = 0;
                     melodyFinished = true;
-                } 
-                else {
+                } else {
                     melodyPause = false;
                     // to calculate the note duration, take one second
                     // divided by the note type.
@@ -989,8 +974,7 @@ void loop() {
                     currentNoteDuration = 1000/gameOverNoteDurations[currentNoteIdx];
                     tone(speakerPin, gameOverMelody[currentNoteIdx]);
                 }
-            } 
-            else {
+            } else {
                 melodyPause = true;
                 noTone(speakerPin);
                 // to distinguish the notes, set a minimum time between them.
