@@ -48,10 +48,13 @@ const unsigned long titleScrollInterval = timeBase / 2;
 // notes in the melody:
 const int titleMelodyNotes = 8;
 const int titleMelody[8] = {
-    NOTE_C4, NOTE_G3, NOTE_G3, NOTE_A3, NOTE_G3, 0, NOTE_B3, NOTE_C4};
+    NOTE_C4, NOTE_G3, NOTE_G3, NOTE_A3, NOTE_G3, 0, NOTE_B3, NOTE_C4
+};
+
 // note durations: 4 = quarter note, 8 = eighth note, etc.:
 const int titleNoteDurations[] = {
-    4, 16, 16, 8, 8, 8, 8, 8 };
+    4, 16, 16, 8, 8, 8, 8, 8 
+};
 
 const char gameOverRow1[] = "GAME\0";
 const char gameOverRow2[] = "O V E R\0";
@@ -59,10 +62,13 @@ const char gameOverRow2[] = "O V E R\0";
 
 const int gameOverMelodyNotes = 8;
 const int gameOverMelody[8] = {
-    NOTE_A3, NOTE_A3, NOTE_G3, NOTE_B3, NOTE_C4, 0, NOTE_G3, NOTE_A3};
+    NOTE_A3, NOTE_A3, NOTE_G3, NOTE_B3, NOTE_C4, 0, NOTE_G3, NOTE_A3
+};
+
 // note durations: 4 = quarter note, 8 = eighth note, etc.:
 const int gameOverNoteDurations[] = {
-    4, 16, 16, 8, 8, 8, 8, 8 };
+    4, 16, 16, 8, 8, 8, 8, 8
+};
 
 // how long to wait for button after title display (in ms)
 const unsigned long titleTimeout = 8000;
@@ -148,13 +154,16 @@ const byte lcdCharPlayerHitID = 7;
 
 // charTypes enum value must match lcdChars* array index
 typedef enum { 
-    none=0, invader=1, player=2, shot=3, invaderHit=4, playerHit=5 } 
-charTypes;
+    none=0, invader=1, player=2, shot=3, invaderHit=4, playerHit=5
+} charTypes;
 
 const byte lcdCharsRight[6] = { 
-    lcdCharSpace, lcdCharInvaderRightID, lcdCharPlayerRightID, lcdCharShotRightID, lcdCharInvaderHitID, lcdCharPlayerHitID };
+    lcdCharSpace, lcdCharInvaderRightID, lcdCharPlayerRightID, lcdCharShotRightID, lcdCharInvaderHitID, lcdCharPlayerHitID
+};
+
 const byte lcdCharsLeft[6] = { 
-    lcdCharSpace, lcdCharInvaderLeftID, lcdCharPlayerLeftID, lcdCharShotLeftID, lcdCharInvaderHitID, lcdCharPlayerHitID };
+    lcdCharSpace, lcdCharInvaderLeftID, lcdCharPlayerLeftID, lcdCharShotLeftID, lcdCharInvaderHitID, lcdCharPlayerHitID
+};
 
 
 // pointers into title strings, used for scrolling
@@ -167,15 +176,15 @@ boolean titleFinished;
 
 // states for switch in loop()
 typedef enum { 
-    titleDisplayInit, titleDisplayScroll, playInit, playRun, gameOverDisplayInit, gameOverDisplayScroll, paused, noOp } 
-gameStates;
+    titleDisplayInit, titleDisplayScroll, playInit, playRun, gameOverDisplayInit, gameOverDisplayScroll, paused, noOp
+} gameStates;
 gameStates gameState;
 
 
 // relict from an older version. really necessary?
 typedef enum { 
-    left, right } 
-playerStates;
+    left, right
+} playerStates;
 playerStates playerState;
 
 unsigned int playerPos;
@@ -1006,4 +1015,3 @@ void loop() {
         break;
     }
 }
-
